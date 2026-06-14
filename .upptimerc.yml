@@ -5,19 +5,11 @@ sites:
   - name: Marketing site (messo.cc)
     url: https://messo.cc
   - name: API (api.messo.cc)
-    url: https://api.messo.cc/health
+    url: https://api.messo.cc/healthz
   - name: Dev marketing site (dev.messo.cc)
     url: https://dev.messo.cc
   - name: Dev API (api-dev.messo.cc)
-    url: https://api-dev.messo.cc/health
-  - name: WhatsApp Daemon
-    url: https://api.messo.cc/health/wa-daemon
-  - name: Agent Worker
-    url: https://api.messo.cc/health/agent-worker
-  - name: MCP Host
-    url: https://api.messo.cc/health/mcp-host
-  - name: MCP Gateway
-    url: https://api.messo.cc/health/mcp-gateway
+    url: https://api-dev.messo.cc/healthz
 
 status-website:
   cname: status.messo.cc
