@@ -1,4 +1,7 @@
-- type: response-time
-  timestamp: 2026-06-14T00:00:00.000Z
-  status: 200
-  responseTime: 0
+url: https://api.messo.cc/healthz
+status: up
+code: 200
+responseTime: 0
+lastUpdated: 2026-06-14T00:00:00.000Z
+startTime: 2026-06-14T00:00:00.000Z
+generator: Upptime <https://github.com/upptime/upptime>
