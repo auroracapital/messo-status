@@ -30,7 +30,7 @@ There is no "single test" concept. To verify a config change, edit `.upptimerc.y
 
 - **The only file you should hand-edit is `.upptimerc.yml`** (plus `README.md`, `CNAME`, issue templates). It is the single source of truth for monitored sites, the status-page branding/navbar, and cron schedules.
 - After editing `.upptimerc.yml`, the generated workflow files update automatically on the next template sync (`update-template.yml`) — do not edit `.github/workflows/*.yml` directly; changes there are blown away.
-- Adding/removing a monitored endpoint = add/remove an entry under `sites:` in `.upptimerc.yml`. Uptime CI then creates the corresponding `history/<slug>.yml`.
+- To add or remove a monitored endpoint, add or remove an entry under `sites:` in `.upptimerc.yml`. Uptime CI then creates the corresponding `history/<slug>.yml`.
 
 ## Monitored endpoints (from `.upptimerc.yml`)
 
@@ -46,7 +46,7 @@ Note: API monitoring uses `/healthz` (not `/health`) — this was an explicit fi
 ## Architecture / data flow
 
 - **Uptime CI** (`uptime.yml`, every 5 min): checks each `sites:` URL, commits up/down results to `history/<slug>.yml`, opens a GitHub Issue when an endpoint is down and closes it on recovery.
-- **Response Time CI** (`response-time.yml`, daily 23:00): records response times into the `history/` YAML files.
+- **Response Time CI** (`response-time.yml`, daily at 23:00 — cron `0 23 * * *`): records response times into the `history/` YAML files. (Note: `README.md`'s "every 6 hours" is stale Upptime template boilerplate; the cron is the source of truth.)
 - **Graphs CI** (`graphs.yml`, daily): generates response-time graphs.
 - **Static Site CI** (`site.yml`, daily 01:00): builds the Svelte/Sapper status site and deploys `site/status-page/__sapper__/export/` to GitHub Pages via `peaceiris/actions-gh-pages` (gh-pages branch).
 - **Summary CI** (`summary.yml`, daily): regenerates `history/summary.json` and the status table in `README.md`.
@@ -57,5 +57,5 @@ The `history/` directory is the database (committed YAML/JSON, ODbL-licensed). I
 ## Conventions
 
 - Workflows authenticate with `secrets.GH_PAT` (falling back to `github.token`). A PAT is needed for cross-workflow triggers and Pages deploys.
-- Commits messages containing `[skip ci]` skip the static-site build.
+- Commit messages containing `[skip ci]` skip the static-site build.
 - Code is MIT; the `./history` data is ODbL.
