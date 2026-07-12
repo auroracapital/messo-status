@@ -38,12 +38,14 @@ jobs:
           command: "update-template"
         env:
           GH_PAT: ${{ secrets.GH_PAT || github.token }}
+          ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION: true
       - name: Update response time
         uses: upptime/uptime-monitor@v1.41.0
         with:
           command: "response-time"
         env:
           GH_PAT: ${{ secrets.GH_PAT || github.token }}
+          ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION: true
           SECRETS_CONTEXT: ${{ toJson(secrets) }}
       - name: Update summary in README
         uses: upptime/uptime-monitor@v1.41.0
@@ -51,6 +53,7 @@ jobs:
           command: "readme"
         env:
           GH_PAT: ${{ secrets.GH_PAT || github.token }}
+          ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION: true
       - name: Generate graphs
         uses: benc-uk/workflow-dispatch@v1
         with:
@@ -62,6 +65,7 @@ jobs:
           command: "site"
         env:
           GH_PAT: ${{ secrets.GH_PAT || github.token }}
+          ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION: true
       - uses: peaceiris/actions-gh-pages@v4
         name: GitHub Pages Deploy
         with:
