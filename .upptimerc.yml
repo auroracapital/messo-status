@@ -6,17 +6,54 @@ sites:
     url: https://messo.cc
   - name: API (api.messo.cc)
     url: https://api.messo.cc/healthz
-  - name: Dev marketing site (dev.messo.cc)
-    url: https://dev.messo.cc
-  - name: Dev API (api-dev.messo.cc)
-    url: https://api-dev.messo.cc/healthz
 
 status-website:
   cname: status.messo.cc
-  logoUrl: https://messo.cc/logo.svg
+  logoUrl: /logo.svg
   name: Messo Status
   introTitle: "**Messo** — AI manager for SMB WhatsApp inboxes."
   introMessage: Live status of all Messo services. Uptime checks run every 5 minutes via GitHub Actions.
+  css: |
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+
+      svg animate,
+      svg animateTransform,
+      svg animateMotion,
+      svg set {
+        display: none !important;
+      }
+    }
+  js: |
+    (function () {
+      var media = window.matchMedia("(prefers-reduced-motion: reduce)")
+      var apply = function () {
+        var nodes = document.querySelectorAll("svg")
+        for (var i = 0; i < nodes.length; i += 1) {
+          var svg = nodes[i]
+          if (!svg.pauseAnimations || !svg.unpauseAnimations) continue
+          if (media.matches) svg.pauseAnimations()
+          else svg.unpauseAnimations()
+        }
+      }
+      apply()
+      if (typeof MutationObserver === "function") {
+        new MutationObserver(apply).observe(document.documentElement, {
+          childList: true,
+          subtree: true,
+        })
+      }
+      if (typeof media.addEventListener === "function") {
+        media.addEventListener("change", apply)
+      }
+    })()
   navbar:
     - title: Status
       href: /
