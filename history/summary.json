@@ -34,41 +34,5 @@
     "timeMonth": 294,
     "timeYear": 322,
     "dailyMinutesDown": {}
-  },
-  {
-    "name": "Dev marketing site (dev.messo.cc)",
-    "url": "https://dev.messo.cc",
-    "icon": "https://icons.duckduckgo.com/ip3/dev.messo.cc.ico",
-    "slug": "dev-marketing-site-dev-messo-cc",
-    "status": "up",
-    "uptime": "100.00%",
-    "uptimeDay": "100.00%",
-    "uptimeWeek": "100.00%",
-    "uptimeMonth": "100.00%",
-    "uptimeYear": "100.00%",
-    "time": 392,
-    "timeDay": 0,
-    "timeWeek": 0,
-    "timeMonth": 472,
-    "timeYear": 392,
-    "dailyMinutesDown": {}
-  },
-  {
-    "name": "Dev API (api-dev.messo.cc)",
-    "url": "https://api-dev.messo.cc/healthz",
-    "icon": "https://icons.duckduckgo.com/ip3/api-dev.messo.cc.ico",
-    "slug": "dev-api-api-dev-messo-cc",
-    "status": "up",
-    "uptime": "100.00%",
-    "uptimeDay": "100.00%",
-    "uptimeWeek": "100.00%",
-    "uptimeMonth": "100.00%",
-    "uptimeYear": "100.00%",
-    "time": 451,
-    "timeDay": 0,
-    "timeWeek": 0,
-    "timeMonth": 996,
-    "timeYear": 451,
-    "dailyMinutesDown": {}
   }
 ]
