@@ -38,8 +38,6 @@ There is no "single test" concept. To verify a config change, edit `.upptimerc.y
 |----------|-----|
 | Marketing site | `https://messo.cc` |
 | API health | `https://api.messo.cc/healthz` |
-| Dev marketing site | `https://dev.messo.cc` |
-| Dev API health | `https://api-dev.messo.cc/healthz` |
 
 Note: API monitoring uses `/healthz` (not `/health`) — this was an explicit fix; keep it.
 
